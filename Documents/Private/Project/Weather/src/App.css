@@ -1,0 +1,127 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(90deg, #f1f1f1 0%, #e6e6e6 100%);
+  margin: 3%;
+}
+
+.weather-card {
+  display: inline-flex; /* Set the display to inline-flex */
+  justify-content: space-around; /* Evenly distribute items with space around */
+  flex-wrap: wrap; /* Allow items to wrap onto the next line */
+  max-width: 500px;
+  background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;  padding-top: 180px;
+  padding-bottom: 170px;
+  margin: 0 auto;
+  margin-top: 1%;
+  transition: transform 0.1s ease-in-out; /* Transition effect for transform */
+  animation: slideIn 0.1s ease forwards; /* Animation for initial appearance */
+  width: calc(33.33% - 20px); /* Calculated width for 3 cards in a row with a small gap */
+  margin: 15px; /* Add some margin between cards */
+}
+
+.weather-data {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.temperature {
+  font-size: 40px;
+  margin: 10px 0;
+  color: rgb(225, 225, 225);
+}
+
+.description {
+  font-size: 26px;
+  color: rgb(225, 225, 225);
+}
+
+.location {
+  font-size: 28px;
+  margin-top: 20px;
+  color: rgb(225, 225, 225);
+}
+
+.weather-icon {
+  margin-top: 5%;
+  width: 70px; /* Set width of the icon */
+}
+
+/* Keyframe animation for initial appearance */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes touchAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* Hover effect */
+.weather-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.9) 0px 22px 70px 4px;  padding-top: 180px;
+  transition: box-shadow 0.5s ease; /* Add transition effect */
+
+}
+.search {
+  display: flex;
+  max-width: 750px;
+  background-color: #ffffff00;
+  border-radius: 10px;
+  border-color: #ffffff00;
+  padding: 15px;
+  margin-top: 3%;
+  margin-bottom: 5%;
+  font-size: 50px;
+  margin-left: 1%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.start{
+  display: flex;
+  max-width: 750px;
+  background-color: #ffffff00;
+  border-radius: 10px;
+  border-color: #ffffff00;
+  padding: 15px;
+  margin-top: 3%;
+  margin-bottom: 5%;
+  font-size: 50px;
+  margin-left: 1%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.first {
+  display: flex;
+  margin-left: 25%;
+}
+
+/* Responsive CSS */
+@media only screen and (max-width: 768px) {
+  .search {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    font-size: 20px;
+  }
+  .start{
+    font-size: 20px;
+  }
+  .first {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .weather-card {
+        width: calc(100% - 20px); /* Adjust width for 1 cards in a row on smaller screens */
+    }
+  }
