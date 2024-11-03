@@ -5,7 +5,6 @@ import rain from './assets/rain.png';
 import './App.css';
 
 const api = {
-  key: process.env.REACT_APP_WEATHER_API_KEY,
   base: "https://api.openweathermap.org/data/2.5/",
 };
 
@@ -14,7 +13,6 @@ function App() {
   const [citiesWeather, setCitiesWeather] = useState([]);
   const [userLocation, setUserLocation] = useState(null);
 
-  // Get user location on initial render
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -26,10 +24,9 @@ function App() {
     }
   }, []);
 
-  // Fetch weather data based on user's geolocation
   useEffect(() => {
     if (userLocation) {
-      fetch(`${api.base}weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=metric&APPID=${api.key}`)
+      fetch(`${api.base}weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`)
         .then((res) => res.json())
         .then((result) => {
           if (result.cod === 200) {
@@ -42,9 +39,8 @@ function App() {
     }
   }, [userLocation]);
 
-  // Fetch weather data for a searched city
   const searchPressed = () => {
-    fetch(`${api.base}weather?q=${search}&units=metric&APPID=${api.key}`)
+    fetch(`${api.base}weather?q=${search}&units=metric&APPID=${process.env.REACT_APP_WEATHER_API_KEY}`)
       .then((res) => res.json())
       .then((result) => {
         if (result.cod === 200) {
@@ -58,7 +54,6 @@ function App() {
       });
   };
 
-  // Function to get the correct weather icon
   const getIcon = (description) => {
     if (description.includes('rain')) {
       return rain;
@@ -71,7 +66,6 @@ function App() {
 
   return (
     <div className="weather-app">
-      {/* Search section */}
       <div className="search-container">
         <input
           type='search'
@@ -82,7 +76,6 @@ function App() {
         <button className="search-button" onClick={searchPressed}>Search</button>
       </div>
 
-      {/* Display weather cards for each city */}
       <div className="weather-cards-container">
         {citiesWeather.map((cityWeather, index) => (
           <div key={index} className="weather-card">
